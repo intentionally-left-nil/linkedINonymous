@@ -9,7 +9,8 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "*://linkedin.com/*",
+        "*://*.linkedin.com/*"
       ],
       "js": ["content.bundle.js"],
       "run_at": "document_end"
