@@ -4,7 +4,8 @@
   "description": "A boilerplate to chrome extension with webpack",
   "scripts": {
     "build": "node utils/build.js",
-    "start": "node utils/webserver.js"
+    "start": "node utils/webserver.js",
+    "test": "jest"
   },
   "dependencies": {
     "react": "^16.3.1",
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
     "babel-preset-react": "^6.16.0",
     "clean-webpack-plugin": "^0.1.19",
@@ -26,10 +28,25 @@
     "fs-extra": "^5.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "3.2.0",
+    "jest": "^22.4.3",
+    "regenerator-runtime": "^0.11.1",
     "style-loader": "^0.20.3",
     "webpack": "4.5.0",
     "webpack-chrome-extension-reloader": "^0.7.0",
     "webpack-dev-server": "^3.1.2",
     "write-file-webpack-plugin": "4.2.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/mocks/styleMock.js"
+    }
   }
 }
