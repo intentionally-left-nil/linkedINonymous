@@ -1,16 +1,28 @@
 {
-  "name": "Chrome Extension Webpack",
-  "options_page": "options.html",
+  "name": "Chrome extension boilerplate",
   "background": {
-    "page": "background.html"
+    "scripts": ["background.bundle.js"]
   },
   "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon-34.png"
+    "default_popup": "popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.bundle.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "icons": {
+    "32": "icon-32.png",
     "128": "icon-128.png"
   },
   "manifest_version": 2,
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "permissions": [
+    "storage"
+  ],
+  "version": "2.0.1"
 }

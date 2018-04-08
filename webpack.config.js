@@ -2,7 +2,6 @@ var webpack = require("webpack"),
     path = require("path"),
     fileSystem = require("fs"),
     env = require("./utils/env"),
-    CleanWebpackPlugin = require("clean-webpack-plugin"),
     CopyWebpackPlugin = require("copy-webpack-plugin"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     WriteFilePlugin = require("write-file-webpack-plugin");
@@ -18,11 +17,13 @@ if (fileSystem.existsSync(secretsPath)) {
   alias["secrets"] = secretsPath;
 }
 
+var jsBase = path.join(__dirname, "src", "js");
+
 var options = {
   entry: {
-    popup: path.join(__dirname, "src", "js", "popup.js"),
-    options: path.join(__dirname, "src", "js", "options.js"),
-    background: path.join(__dirname, "src", "js", "background.js")
+    popup: path.join(jsBase, "popup", "index.js"),
+    background: path.join(jsBase, "background", "index.js"),
+    content: path.join(jsBase, "content", "index.js"),
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -57,8 +58,6 @@ var options = {
     extensions: fileExtensions.map(extension => ("." + extension)).concat([".jsx", ".js", ".css"])
   },
   plugins: [
-    // clean the build folder
-    new CleanWebpackPlugin(["build"]),
     // expose and write the allowed env vars on the compiled bundle
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV)
@@ -75,19 +74,9 @@ var options = {
       }
     }]),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "popup.html"),
+      template: path.join(jsBase, "popup", "index.html"),
       filename: "popup.html",
       chunks: ["popup"]
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "options.html"),
-      filename: "options.html",
-      chunks: ["options"]
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "background.html"),
-      filename: "background.html",
-      chunks: ["background"]
     }),
     new WriteFilePlugin()
   ]
