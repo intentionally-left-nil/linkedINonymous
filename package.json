@@ -15,6 +15,7 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.16.0",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
@@ -47,6 +48,13 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
       "\\.(css|less)$": "<rootDir>/mocks/styleMock.js"
-    }
+    },
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$",
+      "^.+\\.module\\.css$"
+    ]
   }
 }
