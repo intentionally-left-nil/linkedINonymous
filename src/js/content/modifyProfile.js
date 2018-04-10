@@ -5,11 +5,17 @@ const hidePicture = () => {
   }
 };
 
-const anonymizeName = () => {
-  const title = document.querySelector('*[class*="section__name"');
-  if (title) {
-    title.innerHTML = 'INSERT NICKNAME HERE';
+const getName = () => {
+  let name;
+  const container = document.querySelector('*[class*="section__name"]');
+  if (container) {
+    name = container.textContent;
   }
+  return name;
+};
+
+const anonymizeName = () => {
+  const name = getName();
 };
 
 export {

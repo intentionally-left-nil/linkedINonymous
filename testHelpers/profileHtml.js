@@ -1,3 +1,6 @@
+const title = `Jeff Weiner | LinkedIn`;
+
+export { title };
 export default `<div id="artdeco-modal-outlet"></div>
 
     <div id="a11y-menu">  <div id="ember919" class="a11y-menu-container ember-view"><a href="#skip-link" class="visually-hidden skip-link" data-ember-action="" data-ember-action-928="928">Skip to main content</a>

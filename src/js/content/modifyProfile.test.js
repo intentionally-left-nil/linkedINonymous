@@ -1,4 +1,4 @@
-import { hidePicture } from './modifyProfile.js';
+import { hidePicture, anonymizeName } from './modifyProfile';
 import setupProfile, { selectors } from '../../../testHelpers/setupProfile';
 
 let body;
@@ -20,4 +20,10 @@ test('hides the picture', () => {
 
 test('does not error if the picture cannot be found', () => {
   hidePicture();
+});
+
+test('removes the name from the <title>', () => {
+  anonymizeName();
+  const title = document.head.querySelector('title');
+  expect(title.textContent).toEqual('ada');
 });
