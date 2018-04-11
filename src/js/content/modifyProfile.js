@@ -18,11 +18,11 @@ const getNames = () => {
 };
 
 const replaceName = ({ name, nickname, node }) => {
-  const find = new RegExp(`(^|\\s|^\\w|\\w$|\\W\\w|\\w\\W)${name}($|\\s|^\\w|\\w$|\\W\\w|\\w\\W)`, 'gi');
+  const find = new RegExp(`(^|\\s|^\\w|\\w$|\\W\\w|\\w\\W)${name}($|\\s|^\\w|\\w$|\\W\\w|\\w\\W|,|\\.)`, 'gi');
   const replace = `$1${nickname}$2`;
 
   findAndReplaceDomText(node, {
-    preset: 'prose',
+    forceContext: findAndReplaceDomText.NON_INLINE_PROSE,
     find,
     replace,
   });

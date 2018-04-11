@@ -58,15 +58,16 @@ describe('anonymizeNames', () => {
   });
 
   test('handles apostrophes', () => {
-    document.body.innerHTML = '<div class="pv-top-card-section__name Sans-26px-black-85%">Seattle Sounders</div><p>Seattle\'s profile is awesome</p>';
+    document.body.innerHTML = '<div class="pv-top-card-section__name Sans-26px-black-85%">Seattle Sounders</div><div>Seattle\'s profile is awesome</div>';
+    debugger;
     anonymizeNames(['Seattle', 'Sounders']);
     expect(document.body.textContent).toBe("ada adaada's profile is awesome");
   });
 
-  // test('removes all references to Jeff in the profile', () => {
-  //   setupProfile();
-  //   anonymizeNames(['Jeff', 'Weiner']);
-  //   expect(document.body.textContent.includes('Jeff')).toBe(false);
-  //   expect(document.body.textContent.includes('Weiner')).toBe(false);
-  // });
+  test('removes all references to Jeff in the profile', () => {
+    setupProfile();
+    anonymizeNames(['Jeff', 'Weiner']);
+    expect(document.body.textContent.includes('Jeff')).toBe(false);
+    expect(document.body.textContent.includes('Weiner')).toBe(false);
+  });
 });
