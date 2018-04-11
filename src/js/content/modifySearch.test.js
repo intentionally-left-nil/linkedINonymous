@@ -29,6 +29,6 @@ describe('hidePictures', () => {
     const pictures = [...document.querySelectorAll(selectors.pictures)];
     expect(pictures.length).toBeGreaterThan(0);
     hidePictures();
-    pictures.forEach(picture => expect(picture.style.display).toBe('none'));
+    pictures.forEach(picture => expect(picture.style.visibility).toBe('hidden'));
   });
 });

@@ -14,7 +14,7 @@ const anonymizeNames = () => {
 const hidePictures = () => {
   const pictures = document.querySelectorAll('div[class*="image-wrapper"]');
   pictures.forEach((picture) => {
-    picture.style = 'display: none;'; // eslint-disable-line no-param-reassign
+    picture.style = 'visibility: hidden;'; // eslint-disable-line no-param-reassign
   });
 };
 
