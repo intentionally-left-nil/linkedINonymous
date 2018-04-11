@@ -1,6 +1,6 @@
 import { hideEducation, hidePicture, getNames, anonymizeNames } from './modifyProfile';
 
-const isProfilePage = () => /^\/in\//.test(window.location.pathname);
+const isProfilePage = () => window.location.pathname.startsWith('/in/');
 
 const handleProfile = () => {
   let names;
