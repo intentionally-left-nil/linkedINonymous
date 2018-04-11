@@ -1,14 +1,18 @@
 import { hidePicture, anonymizeName } from './modifyProfile';
 import setupProfile, { selectors } from '../../../testHelpers/setupProfile';
 
-let body;
+let savedBody;
+let savedTitle;
 
 beforeEach(() => {
-  body = document.body.innerHTML;
+  savedBody = document.body.innerHTML;
+  const title = document.querySelector(selectors.title);
+  savedTitle = title ? title.innerHTML : '';
 });
 
 afterEach(() => {
-  document.body.innerHTML = body;
+  document.body.innerHTML = savedBody;
+  document.querySelector(selectors.title).innerHTML = savedTitle;
 });
 
 test('hides the picture', () => {
@@ -23,7 +27,8 @@ test('does not error if the picture cannot be found', () => {
 });
 
 test('removes the name from the <title>', () => {
+  setupProfile();
   anonymizeName();
-  const title = document.head.querySelector('title');
-  expect(title.textContent).toEqual('ada');
+  const title = document.head.querySelector(selectors.title);
+  expect(title.textContent).toEqual('ada ada | LinkedIn');
 });

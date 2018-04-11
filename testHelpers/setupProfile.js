@@ -11,6 +11,7 @@ const setupProfile = () => {
 };
 const selectors = {
   picture: '*[class=pv-top-card-section__profile-photo-container]',
+  title: 'title',
 };
 
 export { selectors };
