@@ -60,7 +60,6 @@ describe('anonymizeNames', () => {
 
   test('handles apostrophes', () => {
     document.body.innerHTML = '<div class="pv-top-card-section__name Sans-26px-black-85%">Seattle Sounders</div><div>Seattle\'s profile is awesome</div>';
-    debugger;
     anonymizeNames(['Seattle', 'Sounders']);
     expect(document.body.textContent).toBe("Nick NickNick's profile is awesome");
   });
