@@ -1,6 +1,7 @@
 import { hidePicture, getNames, anonymizeNames } from './modifyProfile';
 import setupProfile, { selectors } from '../../../testHelpers/setupProfile';
 
+jest.mock('./getNickname');
 let savedBody;
 let savedTitle;
 
@@ -47,21 +48,21 @@ describe('anonymizeNames', () => {
     setupProfile();
     anonymizeNames(names);
     const title = getElement('title');
-    expect(title.textContent).toEqual('ada ada | LinkedIn');
+    expect(title.textContent).toEqual('Nick Nick | LinkedIn');
   });
 
   test('removes the name from the body', () => {
     document.body.innerHTML = '<div class="pv-top-card-section__name Sans-26px-black-85%">Seattle Sounders</div>';
     anonymizeNames(['Seattle', 'Sounders']);
     const name = getElement('name');
-    expect(name.textContent).toBe('ada ada');
+    expect(name.textContent).toBe('Nick Nick');
   });
 
   test('handles apostrophes', () => {
     document.body.innerHTML = '<div class="pv-top-card-section__name Sans-26px-black-85%">Seattle Sounders</div><div>Seattle\'s profile is awesome</div>';
     debugger;
     anonymizeNames(['Seattle', 'Sounders']);
-    expect(document.body.textContent).toBe("ada adaada's profile is awesome");
+    expect(document.body.textContent).toBe("Nick NickNick's profile is awesome");
   });
 
   test('removes all references to Jeff in the profile', () => {
