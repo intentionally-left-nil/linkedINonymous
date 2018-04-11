@@ -11,4 +11,11 @@ const anonymizeNames = () => {
   });
 };
 
-export { anonymizeNames };
+const hidePictures = () => {
+  const pictures = document.querySelectorAll('div[class*="image-wrapper"]');
+  pictures.forEach((picture) => {
+    picture.style = 'display: none;'; // eslint-disable-line no-param-reassign
+  });
+};
+
+export { anonymizeNames, hidePictures };

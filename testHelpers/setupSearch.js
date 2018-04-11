@@ -6,6 +6,7 @@ const setupSearch = () => {
 
 const selectors = {
   names: '.actor-name',
+  pictures: '.search-result__image-wrapper'
 };
 
 export { selectors };
