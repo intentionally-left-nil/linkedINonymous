@@ -1,5 +1,5 @@
 import findAndReplaceDomText from 'findandreplacedomtext';
-import getNickname from './getNickname';
+import replaceName from './replaceName';
 
 const hidePicture = () => {
   const profile = document.querySelector('div[class*="profile-photo"]');
@@ -16,18 +16,6 @@ const getNames = () => {
     names = container.textContent.split(' ');
   }
   return names;
-};
-
-const replaceName = ({ name, node }) => {
-  const nickname = getNickname(name);
-  const find = new RegExp(`(^|\\s|^\\w|\\w$|\\W\\w|\\w\\W)${name}($|\\s|^\\w|\\w$|\\W\\w|\\w\\W|,|\\.)`, 'gi');
-  const replace = `$1${nickname}$2`;
-
-  findAndReplaceDomText(node, {
-    forceContext: findAndReplaceDomText.NON_INLINE_PROSE,
-    find,
-    replace,
-  });
 };
 
 const anonymizeNames = (names) => {
