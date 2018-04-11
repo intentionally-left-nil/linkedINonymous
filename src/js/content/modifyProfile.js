@@ -5,10 +5,11 @@ const hidePicture = () => {
   if (profile) {
     profile.style = 'display: none';
   }
+  return !!profile;
 };
 
 const getNames = () => {
-  let names = [];
+  let names = null;
   const container = document.querySelector('*[class*="section__name"]');
   if (container) {
     names = container.textContent.split(' ');
@@ -27,16 +28,14 @@ const replaceName = ({ name, nickname, node }) => {
   });
 };
 
-const anonymizeName = () => {
-  const names = getNames();
-  if (names.length) {
-    const node = document.head.querySelector('title');
-    names.forEach(name => replaceName({ name, nickname: 'ada', node }));
-    names.forEach(name => replaceName({ name, nickname: 'ada', node: document.body }));
-  }
+const anonymizeNames = (names) => {
+  const node = document.head.querySelector('title');
+  names.forEach(name => replaceName({ name, nickname: 'ada', node }));
+  names.forEach(name => replaceName({ name, nickname: 'ada', node: document.body }));
 };
 
 export {
+  getNames,
   hidePicture,
-  anonymizeName,
+  anonymizeNames,
 };
