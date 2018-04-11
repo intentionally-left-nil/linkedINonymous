@@ -19,6 +19,6 @@ describe('anonymizeNames', () => {
     setupSearch();
     anonymizeNames();
     const names = [...document.querySelectorAll(selectors.names)];
-    names.forEach(name => expect(name).toEqual('Nick Nick'));
+    names.forEach(name => expect(name.textContent).toEqual('Nick Nick'));
   });
 });
