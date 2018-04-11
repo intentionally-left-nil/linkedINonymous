@@ -1,4 +1,4 @@
-import { hidePicture, getNames, anonymizeNames } from './modifyProfile';
+import { hideEducation, hidePicture, getNames, anonymizeNames } from './modifyProfile';
 import setupProfile, { selectors } from '../../../testHelpers/setupProfile';
 
 jest.mock('./getNickname');
@@ -28,6 +28,19 @@ describe('hidePicture', () => {
 
   test('returns false when the picture is not found', () => {
     expect(hidePicture()).toBe(false);
+  });
+});
+
+describe('hideEducation', () => {
+  test('hides the education section', () => {
+    setupProfile();
+    expect(hideEducation()).toBe(true);
+    const education = getElement('education');
+    expect(education.style.display).toBe('none');
+  });
+
+  test('returns false when the education section is not found', () => {
+    expect(hideEducation()).toBe(false);
   });
 });
 

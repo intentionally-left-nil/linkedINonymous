@@ -36,8 +36,17 @@ const anonymizeNames = (names) => {
   names.forEach(name => replaceName({ name, node: document.body }));
 };
 
+const hideEducation = () => {
+  const education = document.getElementById('education-section');
+  if (education) {
+    education.style = 'display: none';
+  }
+  return !!education;
+};
+
 export {
   getNames,
+  hideEducation,
   hidePicture,
   anonymizeNames,
 };

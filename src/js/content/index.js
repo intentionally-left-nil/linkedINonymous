@@ -1,23 +1,5 @@
-import { hidePicture, getNames, anonymizeNames } from './modifyProfile';
+import handleProfile, { isProfilePage } from './profile';
 
-let names;
-let pictureHidden = false;
-const setName = () => {
-  if (!names) {
-    names = getNames();
-  }
-};
-
-const observer = new MutationObserver(() => {
-  setName();
-
-  if (!pictureHidden) {
-    pictureHidden = hidePicture();
-  }
-
-  if (names) {
-    anonymizeNames(names);
-  }
-});
-
-observer.observe(document.documentElement, { childList: true, subtree: true });
+if (isProfilePage()) {
+  handleProfile();
+}
