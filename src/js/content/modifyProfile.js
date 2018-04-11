@@ -21,6 +21,7 @@ const replaceName = ({ name, nickname, node }) => {
   const replace = `$1${nickname}$2`;
 
   findAndReplaceDomText(node, {
+    preset: 'prose',
     find,
     replace,
   });
@@ -31,6 +32,7 @@ const anonymizeName = () => {
   if (names.length) {
     const node = document.head.querySelector('title');
     names.forEach(name => replaceName({ name, nickname: 'ada', node }));
+    names.forEach(name => replaceName({ name, nickname: 'ada', node: document.body }));
   }
 };
 

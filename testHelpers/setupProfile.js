@@ -10,7 +10,8 @@ const setupProfile = () => {
   element.innerHTML = title;
 };
 const selectors = {
-  picture: '*[class=pv-top-card-section__profile-photo-container]',
+  picture: '*[class="pv-top-card-section__profile-photo-container"]',
+  name: '*[class="pv-top-card-section__name Sans-26px-black-85%"]',
   title: 'title',
 };
 
