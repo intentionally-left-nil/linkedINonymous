@@ -35,6 +35,16 @@ describe('deanonymizeNames', () => {
     const newNames = nameNodes.map(node => node.textContent);
     expect(names).toEqual(newNames);
   });
+
+  test('removes the data-original-name prop', () => {
+    setupSearch();
+    const nameNodes = [...document.querySelectorAll(selectors.names)];
+    anonymizeNames();
+    deanonymizeNames();
+    nameNodes.forEach((node) => {
+      expect(node.hasAttribute('data-original-name')).toBe(false);
+    });
+  });
 });
 
 describe('hidePictures', () => {

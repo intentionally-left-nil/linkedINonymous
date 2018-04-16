@@ -16,6 +16,7 @@ const deanonymizeNames = () => {
   nodes.forEach((node) => {
     const names = node.dataset.originalName.split(' ');
     names.forEach(name => revertName({ node, name }));
+    node.removeAttribute('data-original-name');
   });
 };
 
