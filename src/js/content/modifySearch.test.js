@@ -1,4 +1,4 @@
-import { anonymizeNames, deanonymizeNames, hidePictures } from './modifySearch';
+import { anonymizeNames, deanonymizeNames, hidePictures, showPictures } from './modifySearch';
 import setupSearch, { selectors } from '../../../testHelpers/setupSearch';
 
 jest.mock('./getNickname');
@@ -44,5 +44,16 @@ describe('hidePictures', () => {
     expect(pictures.length).toBeGreaterThan(0);
     hidePictures();
     pictures.forEach(picture => expect(picture.style.visibility).toBe('hidden'));
+  });
+});
+
+describe('showPictures', () => {
+  test('shows all pictures previously hidden', () => {
+    setupSearch();
+    const pictures = [...document.querySelectorAll(selectors.pictures)];
+    expect(pictures.length).toBeGreaterThan(0);
+    hidePictures();
+    showPictures();
+    pictures.forEach(picture => expect(picture.hasAttribute('style')).toBe(false));
   });
 });

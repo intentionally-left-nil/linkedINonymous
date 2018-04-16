@@ -26,8 +26,14 @@ const hidePictures = () => {
   });
 };
 
+const showPictures = () => {
+  const pictures = document.querySelectorAll('div[class*="image-wrapper"]');
+  pictures.forEach(picture => picture.removeAttribute('style'));
+};
+
 export {
   anonymizeNames,
   deanonymizeNames,
   hidePictures,
+  showPictures,
 };
