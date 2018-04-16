@@ -15,7 +15,7 @@ const handleProfile = () => {
     }
   };
 
-  const observer = new MutationObserver(() => {
+  const onChange = () => {
     if (!isProfilePage()) {
       return;
     }
@@ -32,9 +32,11 @@ const handleProfile = () => {
     if (names) {
       anonymizeNames(names);
     }
-  });
+  };
 
+  const observer = new MutationObserver(onChange);
   observer.observe(document.documentElement, { childList: true, subtree: true });
+  onChange();
 };
 
 export default handleProfile;
