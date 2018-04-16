@@ -11,6 +11,7 @@ config.plugins =
 
 delete config.chromeExtensionBoilerplate;
 
+config.mode = 'development';
 var compiler = webpack(config);
 
 var server =
