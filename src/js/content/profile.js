@@ -1,4 +1,5 @@
 import { setOriginalName, hidePicture, getNames, anonymizeNames } from './modifyProfile';
+import { isDisabled } from './disabled';
 
 const isProfilePage = () => window.location.pathname.startsWith('/in/');
 
@@ -15,7 +16,7 @@ const handleProfile = () => {
   };
 
   const onChange = () => {
-    if (!isProfilePage()) {
+    if (isDisabled() || !isProfilePage()) {
       return;
     }
     setName();

@@ -1,10 +1,11 @@
 import { anonymizeNames, hidePictures } from './modifySearch';
+import { isDisabled } from './disabled';
 
 const isSearchPage = () => window.location.pathname.startsWith('/search/results');
 
 const handleSearch = () => {
   const onChange = () => {
-    if (!isSearchPage()) {
+    if (isDisabled() || !isSearchPage()) {
       return;
     }
     anonymizeNames();
