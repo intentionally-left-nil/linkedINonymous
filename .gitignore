@@ -1,5 +1,6 @@
 build
 secrets.*.js
+*.zip
 
 # Logs
 logs
