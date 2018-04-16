@@ -1,11 +1,10 @@
-import { hideEducation, setOriginalName, hidePicture, getNames, anonymizeNames } from './modifyProfile';
+import { setOriginalName, hidePicture, getNames, anonymizeNames } from './modifyProfile';
 
 const isProfilePage = () => window.location.pathname.startsWith('/in/');
 
 const handleProfile = () => {
   let names;
   let pictureHidden = false;
-  let educationHidden = false;
 
   const setName = () => {
     const newNames = getNames();
@@ -23,10 +22,6 @@ const handleProfile = () => {
 
     if (!pictureHidden) {
       pictureHidden = hidePicture();
-    }
-
-    if (!educationHidden) {
-      educationHidden = hideEducation();
     }
 
     if (names) {
