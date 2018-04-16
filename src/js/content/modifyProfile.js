@@ -29,6 +29,13 @@ const setOriginalName = (names) => {
   container.dataset.originalName = names.join(' ');
 };
 
+const removeOriginalName = () => {
+  const container = document.querySelector('*[class*="section__name"]');
+  if (container) {
+    container.removeAttribute('data-original-name');
+  }
+};
+
 const getOriginalNames = () => {
   let names = [];
   const container = document.querySelector('*[class*="section__name"]');
@@ -49,6 +56,7 @@ const deanonymizeNames = () => {
   const node = document.head.querySelector('title');
   names.forEach(name => revertName({ name, node }));
   names.forEach(name => revertName({ name, node: document.body }));
+  removeOriginalName();
 };
 
 const hideEducation = () => {
