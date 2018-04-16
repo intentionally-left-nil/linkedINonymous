@@ -1,5 +1,8 @@
 {
   "name": "LinkedINonymous",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Reduce implicit bias in hiring by anonymizing LinkedIn profiles",
   "background": {
     "scripts": ["background.bundle.js"]
   },
@@ -23,9 +26,7 @@
     "48": "logo-48.png",
     "128": "logo-128.png"
   },
-  "manifest_version": 2,
   "permissions": [
     "storage"
-  ],
-  "version": "2.0.1"
+  ]
 }
