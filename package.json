@@ -4,6 +4,7 @@
   "description": "Reduce implicit bias in hiring by anonymizing LinkedIn profiles",
   "scripts": {
     "build": "node utils/build.js",
+    "build:prod": "NODE_ENV=production node utils/build.js && zip -r -X extension.zip build/*",
     "start": "node utils/webserver.js",
     "test": "jest"
   },
