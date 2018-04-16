@@ -1,4 +1,4 @@
-import replaceName from './replaceName';
+import { replaceName } from './replaceName';
 
 const hidePicture = () => {
   const profile = document.querySelector('div[class*="profile-photo"]');

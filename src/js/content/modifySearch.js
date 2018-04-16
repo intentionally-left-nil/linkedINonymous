@@ -1,4 +1,4 @@
-import replaceName from './replaceName';
+import { replaceName, revertName } from './replaceName';
 
 const anonymizeNames = () => {
   const nodes = [...document.querySelectorAll('.actor-name:not([data-original-name])')];
@@ -11,6 +11,14 @@ const anonymizeNames = () => {
   });
 };
 
+const deanonymizeNames = () => {
+  const nodes = [...document.querySelectorAll('.actor-name[data-original-name]')];
+  nodes.forEach((node) => {
+    const names = node.dataset.originalName.split(' ');
+    names.forEach(name => revertName({ node, name }));
+  });
+};
+
 const hidePictures = () => {
   const pictures = document.querySelectorAll('div[class*="image-wrapper"]');
   pictures.forEach((picture) => {
@@ -18,4 +26,8 @@ const hidePictures = () => {
   });
 };
 
-export { anonymizeNames, hidePictures };
+export {
+  anonymizeNames,
+  deanonymizeNames,
+  hidePictures,
+};

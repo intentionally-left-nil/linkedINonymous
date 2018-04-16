@@ -1,10 +1,9 @@
 import findAndReplaceDomText from 'findandreplacedomtext';
 import getNickname from './getNickname';
 
-const replaceName = ({ name, node }) => {
-  const nickname = getNickname(name);
-  const find = new RegExp(`(^|\\s|^\\w|\\w$|\\W\\w|\\w\\W)${name}($|\\s|^\\w|\\w$|\\W\\w|\\w\\W|,|\\.)`, 'gi');
-  const replace = `$1${nickname}$2`;
+const swap = ({ node, from, to }) => {
+  const find = new RegExp(`(^|\\s|^\\w|\\w$|\\W\\w|\\w\\W)${from}($|\\s|^\\w|\\w$|\\W\\w|\\w\\W|,|\\.)`, 'gi');
+  const replace = `$1${to}$2`;
 
   findAndReplaceDomText(node, {
     forceContext: findAndReplaceDomText.NON_INLINE_PROSE,
@@ -13,4 +12,17 @@ const replaceName = ({ name, node }) => {
   });
 };
 
-export default replaceName;
+const replaceName = ({ name, node }) => {
+  const nickname = getNickname(name);
+  swap({ node, from: name, to: nickname });
+};
+
+const revertName = ({ name, node }) => {
+  const nickname = getNickname(name);
+  swap({ node, from: nickname, to: name });
+};
+
+export {
+  replaceName,
+  revertName,
+};
