@@ -1,4 +1,4 @@
-import { hideEducation, hidePicture, getNames, anonymizeNames } from './modifyProfile';
+import { hideEducation, setOriginalName, hidePicture, getNames, anonymizeNames } from './modifyProfile';
 
 const isProfilePage = () => window.location.pathname.startsWith('/in/');
 
@@ -8,12 +8,17 @@ const handleProfile = () => {
   let educationHidden = false;
 
   const setName = () => {
-    if (!names) {
-      names = getNames();
+    const newNames = getNames();
+    if (newNames) {
+      names = newNames;
+      setOriginalName(names);
     }
   };
 
   const observer = new MutationObserver(() => {
+    if (!isProfilePage()) {
+      return;
+    }
     setName();
 
     if (!pictureHidden) {
@@ -30,10 +35,6 @@ const handleProfile = () => {
   });
 
   observer.observe(document.documentElement, { childList: true, subtree: true });
-};
-
-export {
-  isProfilePage,
 };
 
 export default handleProfile;

@@ -1,4 +1,3 @@
-import findAndReplaceDomText from 'findandreplacedomtext';
 import replaceName from './replaceName';
 
 const hidePicture = () => {
@@ -11,11 +10,16 @@ const hidePicture = () => {
 
 const getNames = () => {
   let names = null;
-  const container = document.querySelector('*[class*="section__name"]');
+  const container = document.querySelector('*[class*="section__name"]:not([data-original-name])');
   if (container) {
     names = container.textContent.split(' ');
   }
   return names;
+};
+
+const setOriginalName = (names) => {
+  const container = document.querySelector('*[class*="section__name"]');
+  container.dataset.originalName = names.join(' ');
 };
 
 const anonymizeNames = (names) => {
@@ -34,6 +38,7 @@ const hideEducation = () => {
 
 export {
   getNames,
+  setOriginalName,
   hideEducation,
   hidePicture,
   anonymizeNames,

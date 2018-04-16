@@ -1,8 +1,5 @@
-import handleProfile, { isProfilePage } from './profile';
-import handleSearch, { isSearchPage } from './search';
+import handleProfile from './profile';
+import handleSearch from './search';
 
-if (isProfilePage()) {
-  handleProfile();
-} else if (isSearchPage()) {
-  handleSearch();
-}
+handleProfile();
+handleSearch();

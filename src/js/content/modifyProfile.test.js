@@ -53,6 +53,11 @@ describe('getNames', () => {
     setupProfile();
     expect(getNames()).toEqual(['Jeff', 'Weiner']);
   });
+
+  test('returns null when data-original-name is set', () => {
+    document.body.innerHTML = '<div class="pv-top-card-section__name Sans-26px-black-85%" data-original-name="Seattle Sounders">Aardvark Banana</div>';
+    expect(getNames()).toBe(null);
+  });
 });
 
 describe('anonymizeNames', () => {
