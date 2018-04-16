@@ -3,9 +3,16 @@ import { replaceName } from './replaceName';
 const hidePicture = () => {
   const profile = document.querySelector('div[class*="profile-photo"]');
   if (profile) {
-    profile.style = 'display: none';
+    profile.style = 'display: none;';
   }
   return !!profile;
+};
+
+const showPicture = () => {
+  const profile = document.querySelector('div[class*="profile-photo"]');
+  if (profile) {
+    profile.removeAttribute('style');
+  }
 };
 
 const getNames = () => {
@@ -41,5 +48,6 @@ export {
   setOriginalName,
   hideEducation,
   hidePicture,
+  showPicture,
   anonymizeNames,
 };
