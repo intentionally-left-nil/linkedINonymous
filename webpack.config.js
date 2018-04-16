@@ -21,7 +21,6 @@ var jsBase = path.join(__dirname, "src", "js");
 
 var options = {
   entry: {
-    popup: path.join(jsBase, "popup", "index.js"),
     background: path.join(jsBase, "background", "index.js"),
     content: path.join(jsBase, "content", "index.js"),
   },
@@ -78,11 +77,6 @@ var options = {
         from: 'src/static',
       },
     ]),
-    new HtmlWebpackPlugin({
-      template: path.join(jsBase, "popup", "index.html"),
-      filename: "popup.html",
-      chunks: ["popup"]
-    }),
     new WriteFilePlugin()
   ]
 };
