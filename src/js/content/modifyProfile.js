@@ -1,4 +1,4 @@
-import { replaceName } from './replaceName';
+import { replaceName, revertName } from './replaceName';
 
 const hidePicture = () => {
   const profile = document.querySelector('div[class*="profile-photo"]');
@@ -29,10 +29,26 @@ const setOriginalName = (names) => {
   container.dataset.originalName = names.join(' ');
 };
 
+const getOriginalNames = () => {
+  let names = [];
+  const container = document.querySelector('*[class*="section__name"]');
+  if (container) {
+    names = container.dataset.originalName.split(' ');
+  }
+  return names;
+};
+
 const anonymizeNames = (names) => {
   const node = document.head.querySelector('title');
   names.forEach(name => replaceName({ name, node }));
   names.forEach(name => replaceName({ name, node: document.body }));
+};
+
+const deanonymizeNames = () => {
+  const names = getOriginalNames();
+  const node = document.head.querySelector('title');
+  names.forEach(name => revertName({ name, node }));
+  names.forEach(name => revertName({ name, node: document.body }));
 };
 
 const hideEducation = () => {
@@ -50,4 +66,5 @@ export {
   hidePicture,
   showPicture,
   anonymizeNames,
+  deanonymizeNames,
 };

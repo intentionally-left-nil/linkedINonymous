@@ -1,4 +1,4 @@
-import { hideEducation, hidePicture, showPicture, getNames, anonymizeNames } from './modifyProfile';
+import { hideEducation, hidePicture, showPicture, getNames, anonymizeNames, deanonymizeNames, setOriginalName } from './modifyProfile';
 import setupProfile, { selectors } from '../../../testHelpers/setupProfile';
 
 jest.mock('./getNickname');
@@ -97,5 +97,17 @@ describe('anonymizeNames', () => {
     anonymizeNames(['Jeff', 'Weiner']);
     expect(document.body.textContent.includes('Jeff')).toBe(false);
     expect(document.body.textContent.includes('Weiner')).toBe(false);
+  });
+});
+
+describe('deanonymizeNames', () => {
+  test('reverts the anonymous names', () => {
+    const names = ['Jeff', 'Weiner'];
+    setupProfile();
+    const text = document.body.textContent;
+    setOriginalName(names);
+    anonymizeNames(names);
+    deanonymizeNames();
+    expect(document.body.textContent).toBe(text);
   });
 });
