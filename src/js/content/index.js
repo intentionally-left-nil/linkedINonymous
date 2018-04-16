@@ -11,7 +11,8 @@ const run = () => {
 chrome.storage.onChanged.addListener(({ disabled: { newValue: disabled } }) => {
   setDisabled(disabled);
   if (disabled) {
-    window.location.reload(false);
+    showPictures();
+    deanonymizeNames();
   } else {
     run();
   }
