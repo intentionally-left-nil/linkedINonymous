@@ -63,7 +63,8 @@ var options = {
     }),
     new CopyWebpackPlugin([
       {
-        from: "src/manifest.json",
+        from: "src/chrome.manifest.json",
+        to: "manifest.json",
         transform: function (content, path) {
           // generates the manifest file using the package.json informations
           return Buffer.from(JSON.stringify({
