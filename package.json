@@ -6,7 +6,7 @@
     "build": "node utils/build.js",
     "build:firefox": "BROWSER=firefox node utils/build.js",
     "build:firefox:prod": "BROWSER=firefox yarn build:prod",
-    "build:prod": "NODE_ENV=production node utils/build.js && zip -r -X extension.zip build/*",
+    "build:prod": "NODE_ENV=production node utils/build.js && cd build && zip -X -r ../extension.zip .",
     "start": "node utils/webserver.js",
     "test": "jest"
   },
