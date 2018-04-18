@@ -1,0 +1,37 @@
+{
+  "name": "LinkedINonymous",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "Reduce implicit bias in hiring by anonymizing LinkedIn profiles",
+  "background": {
+    "scripts": ["background.bundle.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "logo-16.png",
+      "32": "logo-32.png",
+      "48": "logo-48.png",
+      "128": "logo-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://linkedin.com/*",
+        "*://*.linkedin.com/*"
+      ],
+      "js": ["content.bundle.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "icons": {
+    "16": "logo-16.png",
+    "32": "logo-32.png",
+    "48": "logo-48.png",
+    "128": "logo-128.png"
+  },
+  "permissions": [
+    "storage"
+  ]
+}
