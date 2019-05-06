@@ -15,11 +15,13 @@ const showPicture = () => {
   }
 };
 
+const stripEmpty = (name) => !(/^\s+$/.test(name));
+
 const getNames = () => {
   let names = null;
   const container = document.querySelector('*[class*="section__name"]:not([data-original-name])');
   if (container) {
-    names = container.textContent.split(' ');
+    names = container.textContent.trim().split(' ').filter(stripEmpty);
   }
   return names;
 };
