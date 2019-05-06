@@ -1,4 +1,4 @@
-import { setOriginalName, hidePicture, getNames, anonymizeNames } from './modifyProfile';
+import { getOriginalNames, setOriginalName, hidePicture, getNames, anonymizeNames } from './modifyProfile';
 import { isDisabled } from './disabled';
 
 const isProfilePage = () => window.location.pathname.startsWith('/in/');
@@ -19,10 +19,13 @@ const handleProfile = () => {
     if (isDisabled() || !isProfilePage()) {
       return;
     }
-    setName();
 
     if (!pictureHidden) {
       pictureHidden = hidePicture();
+    }
+
+    if (!getOriginalNames().length) {
+      setName();
     }
 
     if (names) {

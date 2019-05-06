@@ -41,7 +41,7 @@ const removeOriginalName = () => {
 const getOriginalNames = () => {
   let names = [];
   const container = document.querySelector('*[class*="section__name"]');
-  if (container) {
+  if (container && container.dataset.originalName) {
     names = container.dataset.originalName.split(' ');
   }
   return names;
@@ -71,6 +71,7 @@ const hideEducation = () => {
 
 export {
   getNames,
+  getOriginalNames,
   setOriginalName,
   hideEducation,
   hidePicture,
