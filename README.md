@@ -21,6 +21,9 @@ Dependencies: `node`, `yarn`, `Google Chrome`
 1. `yarn start`
 1. Navigate to `chrome://extensions` choose "Load Unpacked", and then select the `build` folder
 
+## Building production versions
+1. `yarn run build:prod` or `yarn run build:firefox:prod` for firefox
+
 ## Feedback
 Please send feedback!
 
